@@ -1,0 +1,44 @@
+USE [Sales_Marketing]
+GO
+
+/****** Object:  Table [dbo].[SalesPerson]    Script Date: 12/21/2020 12:25:32 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SalesPerson](
+	[BusinessEntityID] [int] NOT NULL,
+	[TerritoryID] [int] NOT NULL,
+	[SalesQuota] [money] NOT NULL,
+	[Bonus] [money] NOT NULL,
+	[CommisionPct] [money] NOT NULL,
+	[SalesYTD] [money] NOT NULL,
+	[SalesLastYear] [money] NOT NULL,
+	[CostYTD] [money] NOT NULL,
+	[CostLastYear] [money] NOT NULL,
+	[rowguid] [varchar](50) NOT NULL,
+	[ModifiedDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_SalePerson] PRIMARY KEY CLUSTERED 
+(
+	[rowguid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[SalesPerson]  WITH CHECK ADD  CONSTRAINT [FK_SalesPerson_Person] FOREIGN KEY([BusinessEntityID])
+REFERENCES [dbo].[Person] ([BusinessEntityID])
+GO
+
+ALTER TABLE [dbo].[SalesPerson] CHECK CONSTRAINT [FK_SalesPerson_Person]
+GO
+
+ALTER TABLE [dbo].[SalesPerson]  WITH CHECK ADD  CONSTRAINT [FK_SalesPerson_SaleTerritory] FOREIGN KEY([TerritoryID])
+REFERENCES [dbo].[SaleTerritory] ([TerritoryID])
+GO
+
+ALTER TABLE [dbo].[SalesPerson] CHECK CONSTRAINT [FK_SalesPerson_SaleTerritory]
+GO
+
+
