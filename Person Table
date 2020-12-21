@@ -1,0 +1,32 @@
+USE [Sales_Marketing]
+GO
+
+/****** Object:  Table [dbo].[Person]    Script Date: 12/21/2020 12:14:22 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Person](
+	[BusinessEntityID] [int] IDENTITY(1,1) NOT NULL,
+	[PersonType] [varchar](50) NOT NULL,
+	[NameStyle] [varchar](50) NOT NULL,
+	[Title] [varchar](50) NOT NULL,
+	[FirstName] [varchar](50) NOT NULL,
+	[MiddleName] [varchar](50) NOT NULL,
+	[LastName] [varchar](50) NOT NULL,
+	[Suffix] [varchar](50) NOT NULL,
+	[EmailPromotion] [varchar](50) NOT NULL,
+	[AdditionalContactInfo] [varchar](50) NOT NULL,
+	[Demographics] [varchar](50) NOT NULL,
+	[RowGuid] [varchar](50) NOT NULL,
+	[ModifiedDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Person_1] PRIMARY KEY CLUSTERED 
+(
+	[BusinessEntityID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
