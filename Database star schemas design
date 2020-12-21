@@ -1,0 +1,39 @@
+USE [Sales_Marketing]
+GO
+
+/****** Object:  Table [dbo].[Employee]    Script Date: 12/21/2020 12:10:02 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Employee](
+	[BusinessEntryID] [int] NOT NULL,
+	[NationIDNumber] [int] NOT NULL,
+	[LoginID] [varchar](50) NOT NULL,
+	[BirthDate] [date] NOT NULL,
+	[MaritalStatus] [varchar](10) NOT NULL,
+	[Gender] [varchar](10) NOT NULL,
+	[HireDate] [date] NOT NULL,
+	[SalariedFlag] [varchar](50) NOT NULL,
+	[VacationHours] [datetime] NOT NULL,
+	[SickLeaveHours] [datetime] NOT NULL,
+	[CurrentFlag] [varchar](50) NOT NULL,
+	[rowguid] [varchar](50) NOT NULL,
+	[ModifiedDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Employee_1] PRIMARY KEY CLUSTERED 
+(
+	[NationIDNumber] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Employee]  WITH CHECK ADD  CONSTRAINT [FK_Employee_Person] FOREIGN KEY([BusinessEntryID])
+REFERENCES [dbo].[Person] ([BusinessEntityID])
+GO
+
+ALTER TABLE [dbo].[Employee] CHECK CONSTRAINT [FK_Employee_Person]
+GO
+
+
