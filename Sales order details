@@ -1,0 +1,51 @@
+USE [Sales_Marketing]
+GO
+
+/****** Object:  Table [dbo].[SaleOrderHeader]    Script Date: 12/21/2020 12:17:27 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SaleOrderHeader](
+	[BusinessEntityID] [int] NOT NULL,
+	[SalesOrderID] [int] NULL,
+	[ShipMethodID] [int] NOT NULL,
+	[RevisionNumber] [int] NOT NULL,
+	[OrderDate] [date] NOT NULL,
+	[DueDate] [date] NOT NULL,
+	[ShipDate] [date] NOT NULL,
+	[Status] [varchar](50) NOT NULL,
+	[OnlineOrderFlag] [varchar](50) NOT NULL,
+	[SalesOrderNumber] [int] NOT NULL,
+	[PurchaseOrderNumber] [int] NOT NULL,
+	[AccountNumber] [int] NOT NULL,
+	[TerritoryID] [int] NOT NULL,
+	[BillToAddressID] [varchar](50) NOT NULL,
+	[ShipToAddressID] [varchar](100) NOT NULL,
+	[CreditCardID] [varchar](50) NOT NULL,
+	[CreditCardApprovalCode] [varchar](50) NOT NULL,
+	[CurrencyRateID] [varchar](50) NOT NULL,
+	[SubTotal] [money] NOT NULL,
+	[TaxAmt] [money] NOT NULL,
+	[Freight] [varchar](50) NOT NULL,
+	[TotalDue] [money] NOT NULL,
+	[Comment] [varchar](100) NOT NULL,
+	[rowguid] [varchar](50) NOT NULL,
+	[ModifiedDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_SaleOrderHeader] PRIMARY KEY CLUSTERED 
+(
+	[rowguid] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[SaleOrderHeader]  WITH CHECK ADD  CONSTRAINT [FK_SaleOrderHeader_Person] FOREIGN KEY([BusinessEntityID])
+REFERENCES [dbo].[Person] ([BusinessEntityID])
+GO
+
+ALTER TABLE [dbo].[SaleOrderHeader] CHECK CONSTRAINT [FK_SaleOrderHeader_Person]
+GO
+
+
