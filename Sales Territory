@@ -1,0 +1,27 @@
+USE [Sales_Marketing]
+GO
+
+/****** Object:  Table [dbo].[SaleTerritory]    Script Date: 12/21/2020 12:26:57 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SaleTerritory](
+	[TerritoryID] [int] NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[CountryRegionCode] [varchar](50) NOT NULL,
+	[Group] [varchar](50) NOT NULL,
+	[SalesYTD] [money] NOT NULL,
+	[SalesLastYear] [money] NOT NULL,
+	[rowguid] [varchar](50) NOT NULL,
+	[ModifiedDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_SaleTerritory_1] PRIMARY KEY CLUSTERED 
+(
+	[TerritoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
